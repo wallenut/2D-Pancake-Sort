@@ -1,0 +1,63 @@
+(40) Pancake Sort is an algorithm for rearranging N numbers in sorted order,
+where the only operation is to reverse some initial segment of length K.  When
+viewing the numbers as a stack of pancakes, this corresponds to inserting a
+spatula under the top K pancakes and flipping over that part of the stack.
+The usual object is to minimize the number of flips rather than the number of
+comparisons as in traditional sorting.
+
+See https://en.wikipedia.org/wiki/Pancake_sorting for details.
+
+Generalized Pancake Sort extends Pancake Sort from one dimension to two and
+from sorted order to a goal configuration, while replacing numbers by printing
+characters.  The initial and goal configurations are HEIGHT by WIDTH grids
+(i.e., each has HEIGHT rows and WIDTH columns) of labelled tiles; for example
+
+                    +---+---+---+           +---+---+---+
+                    | B | E | A |           | A | B | C |
+                    +---+---+---+           +---+---+---+
+                    | C | H | D |    and    | D | E | F |
+                    +---+---+---+           +---+---+---+
+                    | F | I | G |           | G | H | I |
+                    +---+---+---+           +---+---+---+
+
+The object is to find a sequence of flips that transform one to the other.
+Each flip takes some K by L leading grid of tiles (i.e., the first K rows and
+the first L columns, where 1 <= K <= HEIGHT and 1 <= L <= WIDTH) and reflects
+it either horizontally or vertically; for example,
+
++---+---+---+    +---+---+---+  +---+---+---+  +---+---+---+  +---+---+---+
+| A | B | C |    | C | B | A |  | G | B | C |  | B | A | C |  | D | E | C |
++---+---+---+    +---+---+---+  +---+---+---+  +---+---+---+  +---+---+---+
+| D | E | F | => | D | E | F |, | D | E | F |, | E | D | F |, | A | B | F |, ...
++---+---+---+    +---+---+---+  +---+---+---+  +---+---+---+  +---+---+---+
+| G | H | I |    | G | H | I |  | A | H | I |  | G | H | I |  | G | H | I |
++---+---+---+    +---+---+---+  +---+---+---+  +---+---+---+  +---+---+---+
+                  1x3 Horiz      3x1 Vert       2x2 Horiz      2x2 Vert
+                                                               
+Write a program
+
+        pancake [HEIGHT WIDTH] MAXLENGTH INITIAL GOAL
+
+that prints out some _shortest_ sequence with at most MAXLENGTH flips (if one
+exists) that transform the INITIAL configuration (BEACHDFIG above) into the
+GOAL configuration (ABCDEFGHI above).  The optional HEIGHT and WIDTH arguments
+default to 3, but must lie between 1 and 16, inclusive.  For example,
+
+        % pancake 10 BEACHDFIG ABCDEFGHI
+        BEACHDFIG
+        CHABEDFIG
+        FIABEDCHG
+        BIAFEDCHG
+        IBAFEDCHG
+        CBAFEDIHG
+        ABCDEFGHI
+
+If no such sequence of flips exists, then nothing is printed; for example,
+
+        % pancake 3 3 5 BEACHDFIG ABCDEFGHI
+
+The labels in each grid square can be any printing characters (see isprint()),
+and they need not be unique.
+
+Use the submit command to turn in the source files for pancake, a Makefile, and
+your log file (see Homework #1).
