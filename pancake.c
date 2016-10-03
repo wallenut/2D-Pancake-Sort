@@ -155,22 +155,6 @@ void sort(char values[], int n)
 
 int main( int argc, char * argv[] )
 {
-	if ( (atoi(argv[1]) == 1) && (atoi(argv[2]) == 10) && (strcmp(argv[4], "0123456789") == 0) \
-		&& (strcmp(argv[5], "7312049685") == 0) && (atoi(argv[3]) == 20) )
-		{
-			printf("0123456789\n1023456789\n2013456789\n");
-			printf("0213456789\n3120456789\n4021356789\n8765312049\n");
-			printf("6785312049\n7685312049\n5867312049\n9402137685\n7312049685\n");
-			exit(10);
-		}
-	if ( (atoi(argv[1]) == 1) && (atoi(argv[2]) == 10) && (strcmp(argv[5], "0123456789") == 0) \
-		&& (strcmp(argv[4], "7312049685") == 0) && (atoi(argv[3]) == 20))
-		{
-			printf("7312049685\n3712049685\n5869402173\n");
-			printf("8569402173\n6589402173\n1204985673\n2104985673\n");
-			printf("7658940123\n5678940123\n9876540123\n3210456789\n0123456789\n");
-			exit(10);
-		} 
 	int height = 0, width = 0, MAXLEN;
 	if (argc != 4 && argc != 6) //either default 4 args or +2 args for height and width
 	{
